@@ -1,12 +1,18 @@
 {
-  "name": "برنامج معالجة الصور والتنعيم",
-  "short_name": "معالجة الصور",
-  "description": "تطبيق إزالة الخلفية وتنعيم الصور - تصميم وتطوير محمد الحطاب",
+  "name": "Photo Studio App",
+  "short_name": "PhotoStudio",
+  "description": "Photo editing and skin smoothing app",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#121214",
   "theme_color": "#121214",
   "icons": [
+    {
+      "src": "comr.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "comr.png",
       "sizes": "512x512",

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>برنامج تعديل وتنعيم الصور - استوديو التصوير</title>
 
-  <!-- أيقونة الموقع للمتصفح والموبايل وملف الـ Manifest -->
+  <!-- أيقونة الموقع وملف Manifest -->
   <link rel="icon" type="image/png" href="comr.png">
   <link rel="apple-touch-icon" href="comr.png">
   <link rel="manifest" href="manifest.json">
@@ -116,7 +116,6 @@
 <body>
 
   <header>
-    <!-- صورة البوستر المضافة -->
     <img src="comr.png" alt="غلاف البرنامج" style="max-width: 100%; height: auto; border-radius: 14px; margin-bottom: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid #2a2a30;">
     <h1>📸 برنامج معالجة الصور والتنعيم</h1>
     <div class="designer-badge">👑 تصميم وتطوير: محمد علي أحمد الحطاب الجبوري</div>
@@ -129,7 +128,6 @@
       <input type="file" id="imgUpload" accept="image/*" onchange="handleImageUpload(event)">
     </div>
 
-    <!-- أداة العصا السحرية لمسح الخلفية -->
     <div class="tools-box">
       <button class="btn-action" id="wandBtn" onclick="toggleWandMode()" disabled>🪄 تفعيل العصا السحرية (المس أي لون في الخلفية لمسحه)</button>
       
@@ -217,6 +215,13 @@
   </footer>
 
   <script>
+    // تسجيل الـ Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js');
+      });
+    }
+
     const canvas = document.getElementById('mainCanvas');
     const ctx = canvas.getContext('2d');
     
@@ -278,7 +283,6 @@
       reader.readAsDataURL(file);
     }
 
-    // تفعيل / إيقاف أداة العصا السحرية باللمس
     function toggleWandMode() {
       isWandMode = !isWandMode;
       const btn = document.getElementById('wandBtn');
@@ -293,7 +297,6 @@
       }
     }
 
-    // التعرف على مكان اللمس بالظبط في الموبايل أو الماوس ومسح اللون
     function handleCanvasTap(e) {
       if (!isImageLoaded || !isWandMode) return;
 
@@ -335,7 +338,7 @@
         );
 
         if (diff <= tolerance) {
-          data[i + 3] = 0; // مسح اللون وجعله شفافاً
+          data[i + 3] = 0;
         }
       }
 
@@ -351,7 +354,6 @@
       }
     }, { passive: false });
 
-    // تطبيق الفلاتر والتنعيم
     function applyEffects() {
       if (!isImageLoaded) return;
 

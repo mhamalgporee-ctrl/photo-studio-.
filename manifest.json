@@ -1,0 +1,17 @@
+{
+  "name": "برنامج معالجة الصور والتنعيم",
+  "short_name": "معالجة الصور",
+  "description": "تطبيق إزالة الخلفية وتنعيم الصور - تصميم وتطوير محمد الحطاب",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#121214",
+  "theme_color": "#121214",
+  "icons": [
+    {
+      "src": "comr.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
